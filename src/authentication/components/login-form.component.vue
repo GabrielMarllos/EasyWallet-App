@@ -1,6 +1,7 @@
 <template>
-  <form v-on:submit="login($event)" class="bg-white dark:bg-black shadow-xl rounded px-8 pt-6 pb-8">
-    <div class="flex flex-col space-y-6">
+  <div class="bg-container min-h-screen W-full flex items-center justify-center">
+    <form v-on:submit="login($event)" class="bg-white dark:bg-black shadow-xl rounded px-8 pt-6 pb-8">
+      <div class="flex flex-col space-y-6">
         <div class="flex justify-center">
           <img class="h-8 w-auto" src="/jobsync-logo.png" alt="JobSync Logo">
         </div>
@@ -13,38 +14,39 @@
           </label>
           <pv-input id="email" class="w-full" v-model="email" placeholder="Enter your email" type="email" required />
         </div>
-      <div class="w-full">
-        <label class="block tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2" for="password">
-          {{ $t('auth.password') }}
-        </label>
-        <div class="flex w-full">
-          <pv-input id="password"
-                    class="w-full"
-                    v-model="password"
-                    :type="this.isPassword"
-                    placeholder="••••••••••••" required
-          />
-          <pv-button
-              :icon="this.isPassword === 'password' ? 'pi pi-eye' : 'pi pi-eye-slash'"
-              severity="secondary"
-              @click="switchVisiblePassword"
-          />
+        <div class="w-full">
+          <label class="block tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2" for="password">
+            {{ $t('auth.password') }}
+          </label>
+          <div class="flex w-full">
+            <pv-input id="password"
+                      class="w-full"
+                      v-model="password"
+                      :type="this.isPassword"
+                      placeholder="••••••••••••" required
+            />
+            <pv-button
+                :icon="this.isPassword === 'password' ? 'pi pi-eye' : 'pi pi-eye-slash'"
+                severity="secondary"
+                @click="switchVisiblePassword"
+            />
+          </div>
+        </div>
+        <pv-button type="submit"
+                   :label="isLoggingIn ? $t('auth.logging-in') : $t('auth.login')"
+                   :disabled="isLoggingIn"
+        />
+        <div class="grid place-items-center">
+          <p class="text-primary">
+            <router-link to="/forgot-password" class="hover:font-medium">{{ $t('auth.forgot-password') }}</router-link>
+          </p>
+          <p>{{ $t('auth.account-question') }}
+            <router-link class="hover:font-medium text-primary" to="register">{{ $t('auth.sign-up') }}</router-link>
+          </p>
         </div>
       </div>
-      <pv-button type="submit"
-                 :label="isLoggingIn ? $t('auth.logging-in') : $t('auth.login')"
-                 :disabled="isLoggingIn"
-      />
-      <div class="grid place-items-center">
-        <p class="text-primary">
-          <router-link to="/forgot-password" class="hover:font-medium">{{ $t('auth.forgot-password') }}</router-link>
-        </p>
-        <p>{{ $t('auth.account-question') }}
-          <router-link class="hover:font-medium text-primary" to="register">{{ $t('auth.sign-up') }}</router-link>
-        </p>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -102,5 +104,14 @@ export default {
 </script>
 
 <style scoped>
-
+.bg-container {
+  background-image: url('../../../public/login-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.3); /* Color blanco semitransparente */
+  background-blend-mode: lighten; /* Mezcla el blanco con la imagen */
+}
 </style>
