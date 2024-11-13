@@ -2,8 +2,8 @@
   <div class="bg-container min-h-screen W-full flex items-center justify-center">
     <form v-on:submit="login($event)" class="bg-white dark:bg-black shadow-xl rounded px-8 pt-6 pb-8">
       <div class="flex flex-col space-y-6">
-        <div class="flex justify-center">
-          <img class="h-8 w-auto" src="/jobsync-logo.png" alt="JobSync Logo">
+        <div>
+          <h1 class="text-center font-bold text-[#4b8693] text-4xl">{{ $t('auth.sign-up-title') }}</h1>
         </div>
         <div>
           <h1 class="text-center font-bold text-3xl">{{ $t('auth.login') }}</h1>

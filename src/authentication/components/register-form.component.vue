@@ -3,29 +3,8 @@
     <div>
       <div class="bg-white dark:bg-black shadow-xl rounded px-8 pt-6 pb-8">
         <div class="flex flex-col space-y-6">
-          <div class="flex justify-center">
-            <img class="h-8 w-auto" src="/jobsync-logo.png" alt="JobSync Logo">
-          </div>
           <div>
-            <h1 class="text-center font-bold text-3xl">{{ $t('auth.sign-up-title') }}</h1>
-          </div>
-          <div class="grid grid-cols-2 font-medium gap-8">
-            <button
-                aria-label="Activate candidate form"
-                class="rounded py-3"
-                :class="[isApplicant ? 'bg-primary text-white' : 'border-2 border-primary text-primary']"
-                @click="setIsApplicant(true)"
-            >
-              {{ $t('auth.candidate') }}
-            </button>
-            <button
-                aria-label="Activate recruiter form"
-                class="rounded py-3"
-                :class="[!isApplicant ? 'bg-primary text-white' : 'border-2 border-primary text-primary']"
-                @click="setIsApplicant(false)"
-            >
-              {{ $t('auth.recruiter') }}
-            </button>
+            <h1 class="text-center font-bold text-[#4b8693] text-4xl">{{ $t('auth.sign-up-title') }}</h1>
           </div>
           <form
               v-on:submit="register($event)"
@@ -99,28 +78,11 @@
                 />
               </div>
             </div>
-            <div class="grid grid-cols-2 items-end gap-4">
-              <div>
-                <label for="country">{{ $t('auth.country') }}</label>
-                <pv-dropdown
-                    required
-                    id="country"
-                    class="w-full"
-                    v-model="selectedCountry"
-                    :options="countries"
-                    :placeholder="$t('auth.select-country')"
-                />
-              </div>
-              <div>
-                <label for="phone-number">{{ $t('auth.phone-number') }}</label>
-                <pv-input
-                    required
-                    id="phone-number"
-                    class="w-full"
-                    v-model="phoneNumber"
-                    type="number"
-                />
-              </div>
+            <div class="text-center text-sm text-gray-500 leading-tight mt-4">
+              Al registrarte, aceptas nuestras
+              <span class="text-blue-600 underline hover:text-blue-800 cursor-pointer">Condiciones</span>,
+              la <span class="text-blue-600 underline hover:text-blue-800 cursor-pointer">Política de privacidad</span> y
+              la <span class="text-blue-600 underline hover:text-blue-800 cursor-pointer">Política de cookies</span>.
             </div>
             <pv-button type="submit" :label="$t('auth.sign-up')"/>
             <p class="text-center my-4">{{ $t('auth.have-account-question') }}<router-link class="hover:font-medium text-primary" to="/login">{{ $t('auth.sign-title') }}</router-link></p>
