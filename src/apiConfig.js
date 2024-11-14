@@ -1,5 +1,5 @@
 // This file contains the base URL for the API endpoints
-const baseUrl = 'https://comercialins.com:8080/';
+const baseUrl = 'http://localhost:8080';
 
 export const authBaseUrl = `${baseUrl}api/v1/auth`;
 export const usersBaseUrl = `${baseUrl}api/v1/users`;
